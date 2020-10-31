@@ -60,7 +60,8 @@ app.layout = html.Div(
         html.Div(
             id='selected_structure',
             children=[
-                html.H3(className='viewer-title', children='Selected structure:'),
+                html.H3(className='viewer-title',
+                        children='Selected structure:'),
                 dcc.Loading(id='loading_selected', className='loading')
             ]
         )
@@ -89,14 +90,15 @@ def display_selected_structure(selectedData, colour_column_value,
 def update_graph(chart_type_value, x_axis_column_name, y_axis_column_name,
                  colour_column_value):
     # General ESF map
+    df_selected = df_selection(chart_type_value)
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=df[x_axis_column_name],
-        y=df[y_axis_column_name],
-        text=df[''],
+        x=df_selected[x_axis_column_name],
+        y=df_selected[y_axis_column_name],
+        text=df_selected[''],
         mode='markers',
         marker={'size': 10,
-                'color': df[colour_column_value],
+                'color': df_selected[colour_column_value],
                 'colorbar': {'title': colour_column_value},
                 'colorscale': 'RdBu',
                 'showscale': True}

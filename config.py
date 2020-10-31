@@ -1,3 +1,3 @@
-CONFIG = {  # 'modeBarButtonsToRemove': ['select2d', 'lasso2d'],
-    'displayModeBar': True
-}
+CONFIG = {'modeBarButtonsToRemove': ['select2d', 'lasso2d'],
+          'displayModeBar': True
+          }
