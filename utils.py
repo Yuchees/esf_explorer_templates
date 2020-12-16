@@ -1,11 +1,9 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 These functions is designed for crystal structure formation and
 the 3D molecular viewer application
 """
 import json
-import pandas as pd
 
 import plotly.graph_objects as go
 import dash_html_components as html
@@ -30,13 +28,36 @@ def load_json(file_path):
 
 
 def th4_plot(df, x_axis_column_name, y_axis_column_name, colour_column_value):
+    """
+    Plotly Figure object for th4 data
+
+    Parameters
+    ----------
+    df: DataFrame
+        Data table
+    x_axis_column_name: str
+    y_axis_column_name: str
+    colour_column_value: str
+
+    Returns
+    -------
+    Figure
+        Plotly figure object
+    """
     fig = go.Figure()
-    # The rest figure have a continues color bar.
     fig.add_trace(go.Scatter(
+        # X and Y coordinates from data table
         x=df[x_axis_column_name],
         y=df[y_axis_column_name],
         text=df.index,
+        mode='markers',
+        # Set the format of scatter
         marker=dict(
+            symbol='circle',
+            opacity=0.7,
+            line=dict(color='rgb(40, 40, 40)', width=0.2),
+            size=8,
+            # Colour bar
             color=df[colour_column_value],
             colorscale='RdBu',
             colorbar=dict(
@@ -48,16 +69,6 @@ def th4_plot(df, x_axis_column_name, y_axis_column_name, colour_column_value):
             showscale=True
         )
     ))
-    # Set the format of points
-    fig.update_traces(
-        mode='markers',
-        marker=dict(
-            symbol='circle',
-            opacity=0.7,
-            line=dict(color='rgb(40, 40, 40)', width=0.2),
-            size=8
-        )
-    )
     # Set the format of axes
     axis_template = dict(linecolor='#444', tickcolor='#444',
                          ticks='outside', showline=True, zeroline=False,
@@ -74,16 +85,18 @@ def th4_plot(df, x_axis_column_name, y_axis_column_name, colour_column_value):
 
 def structure_viewer(df, interactive_data):
     """
-    The molecular viewer
+    The molecular 3D viewer
 
     Parameters
     ----------
     df: Dataframe
+        Data table
     interactive_data: dict
-
+        Plotly callback information
     Returns
     -------
     list
+        A list of viewer object
     """
 
     def single_3d_viewer(json_file, structure_index):
@@ -106,12 +119,14 @@ def structure_viewer(df, interactive_data):
     # Loading multiple 3D viewer
     try:
         for i in range(len(interactive_data['points'])):
+            # Find index from plotly callback information
             index = int(interactive_data['points'][i]['pointIndex'])
-            structure_name = int(df.iloc[index].Name)
             origin_idx = index
+            # Get structure name
+            structure_name = int(df.iloc[index].Name)
+            # Path of parsed structure file
             json_path = './data/th4/{}.json'.format(structure_name)
-            viewer = single_3d_viewer(json_path, origin_idx)
-            mol_div.append(viewer)
+            mol_div.append(single_3d_viewer(json_path, origin_idx))
     # Default structure
     except TypeError:
         json_path = './data/th4/100020031487063.json'
