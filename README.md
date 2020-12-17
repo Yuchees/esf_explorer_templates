@@ -3,7 +3,7 @@ This web application is a mini example of the deployed [online ESF map](https://
 It uses Dash to achieve interactive HTML functions and Plotly to build scatter chart.
 The web app is deployed to Heroku server.
 
-Due to the data size limitation, only th4 chart and structures whom relative lattice energy are lower than 30 were present in this template.
+Due to the data size limitation, only th4 chart and structures whose relative lattice energy are lower than 30 were present in this template.
 
 ## Run application locally
 Create a new virtual environment by ```conda```:
@@ -48,7 +48,6 @@ since the ```dash_bio``` is primitively designed for visualizing bioinformatics 
 such as no crystal periodic information and editing the colour of elements.
 
 ## More information
-***
 Tutorial for Dash:
 https://dash.plotly.com/
 
