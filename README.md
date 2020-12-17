@@ -1,13 +1,11 @@
 # ESF Map Template
-***
 This web application is a mini example of the deployed [online ESF map](https://www.interactive-esf-maps.app/).
-It uses Dash to achieve all interactive HTML functions and Plotly to build scatter chart.
+It uses Dash to achieve interactive HTML functions and Plotly to build scatter chart.
 The web app is deployed to Heroku server.
 
 Due to the data size limitation, only th4 chart and structures whom relative lattice energy are lower than 30 were present in this template.
 
 ## Run application locally
-***
 Create a new virtual environment by ```conda```:
 
 ```
@@ -31,9 +29,9 @@ Please cite our paper if you use this template:
 *
 
 ## Note to users
-All data including tables and chemical structures are stored in `./data`
+Data including tables and chemical structures are stored in `./data`
 
-The HTML format information is placed in `./assets/esf_map.css`
+The HTML formatting information is placed in `./assets/esf_map.css`
 
 `Procfile` is a declaring command file on Heroku platform.
 
