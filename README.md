@@ -26,7 +26,9 @@ The default local web page is http://127.0.0.1:8050/
 ## Citation
 
 Please cite our paper if you use this template:
-* Updated in the future
+* Zhao, C., Chen, L., Che, Y. et al. Digital navigation of energy–structure–function maps 
+  for hydrogen-bonded porous molecular crystals. Nat Commun 12, 817 (2021).
+* DOI: https://doi.org/10.1038/s41467-021-21091-w
 
 ## Note to users
 Data including tables and chemical structures are stored in `./data`
