@@ -1,4 +1,6 @@
 # ESF Map Template
+[![DOI](https://zenodo.org/badge/306344480.svg)](https://zenodo.org/badge/latestdoi/306344480)
+
 This web application is a mini example of the deployed [online ESF map](https://www.interactive-esf-maps.app/).
 It uses Dash to achieve interactive HTML functions and Plotly to build scatter chart.
 The web app is deployed to Heroku server.
